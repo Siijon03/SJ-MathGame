@@ -1,7 +1,9 @@
 ﻿using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
+using System.Timers;
 
 class Program
 {
@@ -16,6 +18,8 @@ class Program
         // We can get the current date and time.
         var date = DateTime.Today;
         Console.WriteLine(date);
+
+
 
         int index = 1;
         Menu(ref index);
@@ -106,6 +110,10 @@ Hello {userName}, What would you like to play?
         int questionIndex = 1;
 
         Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Green;
+
+        var stopwatch = Stopwatch.StartNew();
+
 
         for (int i = 0; i < totalScore; i++)
         {
@@ -128,12 +136,16 @@ Hello {userName}, What would you like to play?
             }
         }
 
+        stopwatch.Stop();
+
         Console.WriteLine($"Game Over {userName}!! Your Final Score is {score} out of {totalScore}");
         Console.WriteLine("\n Press Any Key To Return to Menu.");
         Console.ReadLine();
+        Console.ResetColor();
 
         // Log the game played
         gamesPlayed.Add($"Addition Game: {score}/{totalScore} at {DateTime.UtcNow}");
+        gamesPlayed.Add($"This Game Took you {stopwatch.Elapsed:mm\\:ss}");
     }
 
     static void SubtractionGame()
@@ -151,6 +163,9 @@ Hello {userName}, What would you like to play?
         int questionIndex = 1;
 
         Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Red;
+
+        var stopwatch = Stopwatch.StartNew();
 
         for (int i = 0; i < totalScore; i++)
         {
@@ -176,9 +191,11 @@ Hello {userName}, What would you like to play?
         Console.WriteLine($"Game Over {userName}!! Your Final Score is {score} out of {totalScore}");
         Console.WriteLine("\n Press Any Key To Return to Menu.");
         Console.ReadLine();
+        Console.ResetColor();
 
         // Log the game played
         gamesPlayed.Add($"Subtraction Game: {score}/{totalScore} at {DateTime.UtcNow}");
+        gamesPlayed.Add($"This Game Took you {stopwatch.Elapsed:mm\\:ss}");
     }
 
     static void DivisionGame()
@@ -192,6 +209,9 @@ Hello {userName}, What would you like to play?
         int questionIndex = 1;
 
         Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Blue;
+
+        var stopwatch = Stopwatch.StartNew();
 
         for (int i = 0; i < totalScore; i++)
         {
@@ -218,9 +238,11 @@ Hello {userName}, What would you like to play?
         Console.WriteLine($"Game Over {userName}!! Your Final Score is {score} out of {totalScore}");
         Console.WriteLine("\n Press Any Key To Return to Menu.");
         Console.ReadLine();
+        Console.ResetColor();
 
         // Log the game played
         gamesPlayed.Add($"Division Game: {score}/{totalScore} at {DateTime.UtcNow}");
+        gamesPlayed.Add($"This Game Took you {stopwatch.Elapsed:mm\\:ss}");
     }
 
     static void MultiplicationGame()
@@ -238,6 +260,9 @@ Hello {userName}, What would you like to play?
         int questionIndex = 1;
 
         Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Yellow;
+
+        var stopwatch = Stopwatch.StartNew();
 
         for (int i = 0; i < totalScore; i++)
         {
@@ -263,15 +288,19 @@ Hello {userName}, What would you like to play?
         Console.WriteLine($"Game Over {userName}!! Your Final Score is {score} out of {totalScore}");
         Console.WriteLine("\n Press Any Key To Return to Menu.");
         Console.ReadLine();
+        Console.ResetColor();
 
         // Log the game played
         gamesPlayed.Add($"Multiplication Game: {score}/{totalScore} at {DateTime.UtcNow}");
+        gamesPlayed.Add($"This Game Took you {stopwatch.Elapsed:mm\\:ss}");
     }
 
     static void ViewPrevGames()
     {
         Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Magenta;
         Console.WriteLine("Previous Games Played:");
+
         if (gamesPlayed.Count == 0)
         {
             Console.WriteLine("No games have been played yet.");
@@ -285,6 +314,7 @@ Hello {userName}, What would you like to play?
         }
         Console.WriteLine("\nPress Any Key To Return to Menu.");
         Console.ReadLine();
+        Console.ResetColor();
     }
 
     static int[] GetDivisionNumbers()
