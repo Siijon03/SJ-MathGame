@@ -19,8 +19,6 @@ class Program
         var date = DateTime.Today;
         Console.WriteLine(date);
 
-
-
         int index = 1;
         Menu(ref index);
     }
@@ -103,11 +101,17 @@ Hello {userName}, What would you like to play?
         int firstNum;
         int secondNum;
 
+
         int totalScore;
         Console.WriteLine("How Many Questions would you like? (Type it out in Integers)");
         totalScore = int.Parse(Console.ReadLine());
         int score = 0;
         int questionIndex = 1;
+
+        Console.WriteLine("What is Your First Random Number Limit?");
+        int firstRan = int.Parse(Console.ReadLine());
+        Console.WriteLine("What is Your Second Random Number Limit?");
+        int secondRan = int.Parse(Console.ReadLine());
 
         Console.Clear();
         Console.ForegroundColor = ConsoleColor.Green;
@@ -117,8 +121,8 @@ Hello {userName}, What would you like to play?
 
         for (int i = 0; i < totalScore; i++)
         {
-            firstNum = randomNum.Next(1, 20);
-            secondNum = randomNum.Next(1, 20);
+            firstNum = randomNum.Next(1, firstRan);
+            secondNum = randomNum.Next(1, secondRan);
 
             Console.WriteLine($"{questionIndex++}. What is {firstNum} + {secondNum} ?");
             var result = Console.ReadLine();
@@ -162,6 +166,11 @@ Hello {userName}, What would you like to play?
         int score = 0;
         int questionIndex = 1;
 
+        Console.WriteLine("What is Your First Random Number Limit?");
+        int firstRan = int.Parse(Console.ReadLine());
+        Console.WriteLine("What is Your Second Random Number Limit?");
+        int secondRan = int.Parse(Console.ReadLine());
+
         Console.Clear();
         Console.ForegroundColor = ConsoleColor.Red;
 
@@ -169,8 +178,8 @@ Hello {userName}, What would you like to play?
 
         for (int i = 0; i < totalScore; i++)
         {
-            firstNum = randomNum.Next(1, 20);
-            secondNum = randomNum.Next(1, 20);
+            firstNum = randomNum.Next(1, firstRan);
+            secondNum = randomNum.Next(1, secondRan);
 
             Console.WriteLine($"{questionIndex++}. What is {firstNum} - {secondNum} ?");
             var result = Console.ReadLine();
@@ -259,6 +268,12 @@ Hello {userName}, What would you like to play?
         int score = 0;
         int questionIndex = 1;
 
+        Console.WriteLine("What is Your First Random Number Limit?");
+        int firstRan = int.Parse(Console.ReadLine());
+        Console.WriteLine("What is Your Second Random Number Limit?");
+        int secondRan = int.Parse(Console.ReadLine());
+
+
         Console.Clear();
         Console.ForegroundColor = ConsoleColor.Yellow;
 
@@ -266,8 +281,8 @@ Hello {userName}, What would you like to play?
 
         for (int i = 0; i < totalScore; i++)
         {
-            firstNum = randomNum.Next(1, 20);
-            secondNum = randomNum.Next(1, 20);
+            firstNum = randomNum.Next(1, firstRan);
+            secondNum = randomNum.Next(1, secondRan);
 
             Console.WriteLine($"{questionIndex++}. What is {firstNum} * {secondNum} ?");
             var result = Console.ReadLine();
@@ -319,6 +334,7 @@ Hello {userName}, What would you like to play?
 
     static int[] GetDivisionNumbers()
     {
+
         var random = new Random();
         int firstNum = random.Next(1, 99);
         int secondNum = random.Next(1, 99);
