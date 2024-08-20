@@ -217,6 +217,11 @@ Hello {userName}, What would you like to play?
         int score = 0;
         int questionIndex = 1;
 
+        Console.WriteLine("What is Your First Random Number Limit?");
+        int ranNum = int.Parse(Console.ReadLine());
+        Console.WriteLine("What is Your Second Random Number Limit?");
+        int ranNum2 = int.Parse(Console.ReadLine());
+
         Console.Clear();
         Console.ForegroundColor = ConsoleColor.Blue;
 
@@ -224,7 +229,7 @@ Hello {userName}, What would you like to play?
 
         for (int i = 0; i < totalScore; i++)
         {
-            var divisionNumbers = GetDivisionNumbers();
+            var divisionNumbers = GetDivisionNumbers(ranNum, ranNum2);
             var firstNumber = divisionNumbers[0];
             var secondNumber = divisionNumbers[1];
 
@@ -332,17 +337,17 @@ Hello {userName}, What would you like to play?
         Console.ResetColor();
     }
 
-    static int[] GetDivisionNumbers()
+    static int[] GetDivisionNumbers(int ranNum, int ranNum2)
     {
 
         var random = new Random();
-        int firstNum = random.Next(1, 99);
-        int secondNum = random.Next(1, 99);
+        int firstNum = random.Next(1, ranNum);
+        int secondNum = random.Next(1, ranNum2);
 
         while (firstNum % secondNum != 0)
         {
-            firstNum = random.Next(1, 99);
-            secondNum = random.Next(1, 99);
+            firstNum = random.Next(1, ranNum);
+            secondNum = random.Next(1, ranNum2);
         }
 
         return new int[] { firstNum, secondNum };
